@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar cliente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <script src="{% static 'js/funciones.js' %}"></script>
+    
+    <style>
+        body{
+            font-family: Arial;
+        }
+
+        .error-control{
+            border: 1px solid red;
+        }
+
+        label.error{
+            color: red;
+            width: 200px;
+            font-size: 0.8em;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
+    </style>
+
+<script>
+
+    $(function() 
+    {
+      $("#formulario").validate({
+           rules: {
+                  email: {
+                        nombre: "required",
+                        apellidos: "required",
+                        rut: "required",
+                        telefono: "required",
+                        direccion: "required",
+                        
+                  }   
+                  
+              }, //rules
+          messages: {
+              nombre: {
+                  required: 'Ingrese su nombre',
+              },
+              apellidos: {
+                  required: 'Ingrese apellidos',
+              },
+              rut:{
+                  required: 'Ingrese su rut',
+              },
+              telefono:{
+                  required: 'ingrese su telefono',
+              },
+          }//messages
+      }); //$('#mi-formulario').validate
+  }); //function
+</script>
+</head>
+<body>
+
+    {% load static %}
+
+    <!-- Menu -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"> 
+              <img class="logotipo" src="{% static 'img/LogoPerro.jpg' %}" alt="50px" width="50px"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'index' %}" >PetStore</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'somos' %} ">Quienes Somos</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'FormularioR' %}">Registrarse</a>
+              </li>
+
+              
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'FormularioC' %} ">Contacto</a>
+              </li> 
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %} ">Ingresar</a>
+              </li> 
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'Feriados' %} ">Feriados</a>
+              </li> 
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'mostrar_producto' %} ">Producto</a>
+              </li> 
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'Mostrarclientes' %}">Clientes</a>
+              </li>
+
+             
+
+
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Productos
+                </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'galeria' %}">Alimentos</a></li>
+                    <li><a class="dropdown-item" href="{% url 'galeria' %}">Accesorios</a></li>
+                    <li><a class="dropdown-item" href="{% url 'galeria' %}">Juguetes</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'FormularioC' %}">Contacto</a></li>
+                    </ul>
+                <li class="nav-item">
+                    
+                  </li>
+              
+                </li>
+
+               
+
+
+
+            </ul>
+
+
+
+
+
+
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="¿Que estas buscando?" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+            
+          </div>
+        </div>
+      </nav>
+    
+
+    <div class="container">
+        <h2>Modificar clientes</h2><br>
+        {% if user.is_authenticated  %}
+
+       
+        <form method="POST" action="#" id="formulario">
+            {% csrf_token %}
+            <div class="form-group">
+                {{form.nombre.label}}
+                {{form.nombre}}
+            </div>
+
+            <div class="form-group">
+                {{form.apellidos.label}}
+                {{form.apellidos}}
+            </div>
+
+            <div class="form-group">
+                {{form.rut.label}}
+                {{form.rut}}
+            </div>
+
+            <div class="form-group">
+                {{form.telefono.label}}
+                {{form.telefono}}
+
+            <div class="form-group">
+                {{form.direccion.label}}
+                {{form.direccion}}
+
+            
+            </div>
+            <br><br>
+            
+            <input type="submit" class="btn btn-primary" value="Enviar">
+            <a href="{% 'Mostrarclientes' %}" class="btn btn-success">Modificar cliente</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    {% load static %}
+
+    <!-- Menu -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"> 
+              <img class="logotipo" src="{% static 'img/LogoPerro.jpg' %}" alt="50px" width="50px"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'index' %}" >PetStore</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'somos' %} ">Quienes Somos</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'FormularioR' %}">Registrarse</a>
+              </li>
+
+              
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'FormularioC' %} ">Contacto</a>
+              </li> 
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %} ">Ingresar</a>
+              </li> 
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'Feriados' %} ">Feriados</a>
+              </li> 
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'mostrar_producto' %} ">Producto</a>
+              </li> 
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'Mostrarclientes' %}">Clientes</a>
+              </li>
+
+             
+
+
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Productos
+                </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'galeria' %}">Alimentos</a></li>
+                    <li><a class="dropdown-item" href="{% url 'galeria' %}">Accesorios</a></li>
+                    <li><a class="dropdown-item" href="{% url 'galeria' %}">Juguetes</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'FormularioC' %}">Contacto</a></li>
+                    </ul>
+                <li class="nav-item">
+                    
+                  </li>
+              
+                </li>
+
+               
+
+
+
+            </ul>
+
+
+
+
+
+
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="¿Que estas buscando?" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+            
+          </div>
+        </div>
+      </nav>
+    
+
+    <div class="container">
+        <h1>Mostrar producto</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombres</th>
+                    <th>codigo de barra</th>
+                    <th>edad del animal</th>
+                    <th>categoria</th>
+                    <th>modificar producto</th>
+                    <th>eliminar producto</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for ve in producto %}
+
+                <tr>
+                    <td>{{ ve.nombre }}</td>
+                    <td>{{ ve.codigo_barra }}</td>
+                    <td>{{ ve.edad_animal }}</td>
+                    <td>{{ ve.categoria}}</td>
+
+
+                    
+                    {% if user.is_authenticated  %}
+                    <td><a href="{% url 'modificar_producto' ve.codigo_barra %}" class="btn btn-primary">Modificar</a></td>
+                    {% else %}
+                    <td><a href="#" >No tiene permisos para Mostrar</a></td>
+                    {% endif %}
+                    
+                    {% if user.is_authenticated  %}
+                    <td><a href="{% url 'eliminar_producto' ve.codigo_barra %}" class="btn btn-danger">Eliminar</a></td>
+                    {% else %}
+                    <td><a href="#" style="color:red;">No tiene permisos para eliminar</a></td>
+                    {% endif %}             
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% if user.is_authenticated  %}
+        <a href="{% url 'from_crear_productos' %}" class="btn btn-primary">Agregar producto</a>
+        {% endif %}
+        <a href="{% url 'index' %}" class="btn btn-success">Principal</a>
+    </div>
+</body>
+</html>

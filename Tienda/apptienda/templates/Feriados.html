@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/LogoPetStore/png-clipart-paw-logo-dog-dog-animals-paw.png" />
+    <title>Dias feriados</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="css/bootsrap.min.css" type="text/css"rel= "stylesheet">
+  
+
+<body>
+  {% load static %}
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"> 
+          <img class="logotipo" src="{% static 'img/LogoPerro.jpg' %}" alt=""width="50px"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}" >PetStore</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'somos' %} ">Quienes Somos</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'FormularioR' %}">Registrarse</a>
+          </li>
+
+          
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'FormularioC' %} ">Contacto</a>
+          </li> 
+
+          
+
+
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Productos
+            </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="galeria.html">Alimentos</a></li>
+                <li><a class="dropdown-item" href="#">Accesorios</a></li>
+                <li><a class="dropdown-item" href="#">Juguetes</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Contacto</a></li>
+                </ul>
+            <li class="nav-item">
+                
+              </li>
+          
+            </li>
+
+           
+
+
+
+        </ul>
+
+
+
+
+
+
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="¿Que estas buscando?" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+        
+      </div>
+    </div>
+  </nav>
+   
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- Popper JS -->
+        
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <div>
+        
+    </div>
+    <br>
+    <br>
+    <br>
+        <script type="text/javascript">
+            $(document).ready(function()
+            {
+                $("#enviar").click(function()
+                {
+                    $.get("https://apis.digital.gob.cl/fl/feriados/2022/09",
+                        function(data)
+                        {
+                            
+                            $.each(data,function(i,item)
+                            {
+                                $("#categorias").append("<tr><td>"+ item.nombre +
+                                "</td><td>"+ item.fecha+
+                                "</td><td>"+item.tipo+"</td></tr>");
+                            
+                            });
+
+                        });
+                
+                });
+
+            
+            })
+        
+        </script>
+    
+
+        <br>
+        <br>
+        <div class="container">
+            <h1>Dias que no Funcionamos </h1>
+
+            <div id="caja">
+                <button type="button" id="enviar">Cargando datos</button>
+            </div>
+
+            <table class="table" id="categorias">
+                <thead>
+                    <tr>
+                        <th scope="col">nombre</th>
+                        <th scope="col">fecha</th>
+                        <th scope="col">tipo</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+        
+            </table>
+            
+
+
+        </div>
+        <br> <br>
+  <br>  <br>
+  <br>  <br>
+  <br>  <br> 
+  <br>  <br>
+  <br>  <br>
+  <br>  <br>
+  <br>  <br>
+  <br>  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+        <footer style="background-color:rgb(83, 71, 83)">
+
+            <div class="row col-12">
+                <div class="col-lg-1">
+                    <img src="img/LogoPetStore/png-clipart-paw-logo-dog-dog-animals-paw.png" alt="logoBookStop" width="60px">
+                </div>
+                <div class="col-lg-1">
+                   
+                </div>
+                <div class="col-lg-1">
+                    
+                </div>
+                <div class="col-lg-1">
+                    
+                </div>
+                <div class="col-lg-2">
+                    
+                </div>
+                <br>
+          
+          
+                <img class="logofooter" src="{% static 'img/LogoPerro.jpg' %}" alt="logotipo" width="60px">
+                  <br>
+                  <img class="iconos" src="{% static 'img/facebook-logo-button.svg' %}" alt="" width="60px">
+                  <img class="iconos" src="{% static 'img/instagram-logo.svg' %}" alt="" width="60px">
+                  <img class="iconos" src="{% static 'img/twitter-logo-button.svg' %}" alt="" width="60px">
+                  <p>
+                      
+                      <br>
+                      Felipe Hernandez.
+                      <br>
+                      <strong>
+                          @Copyrigth Derechos reservados.
+                      </strong>
+                  </p>
+          </footer>
+          
+
+</body>
+</html>

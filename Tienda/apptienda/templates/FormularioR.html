@@ -1,0 +1,298 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+    <!--estilos propios-->
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,500;1,700&display=swap" rel="stylesheet">
+    <title>PetStore!</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <script src="{% static 'js/funciones.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+  
+        $(function() 
+        {
+          $("#mi-formulario").validate({
+               rules: {
+                      email: {
+                          required: true,
+                          email: true
+                      },
+                      password: "required",
+                      fono: "required",
+                      fecha: "required",
+                      password2: {
+                          required: true,
+                          equalTo: "#password"
+                      }   
+                      
+                  },
+                  
+                  
+                  //rules
+              messages: {
+                  email: {
+                      required: 'Ingresa tu correo electrónico',
+                      email: 'Formato de correo no válido'
+                  },
+                  password: {
+                      required: 'Ingresa una contraseña',
+                      minlength: 'Caracteres insuficientes'
+                  },
+                  fono:{
+                      required: 'Ingrese un número de celular',
+                      minlength: 'Cantidad de digitos insuficiente'
+                  },
+                  
+                  
+                  password2: {
+                      required: 'Reingresa la contraseña',
+                      equalTo: 'Las contraseñas ingresadas no coinciden',
+                      minlength: 'Caracteres insuficientes'
+  
+                  }
+              }//messages
+          }); //$('#mi-formulario').validate
+      }); //function
+  
+      function MostrarFecha() 
+          {   document.getElementById('demo').innerHTML = Date();
+           
+          }
+  
+          function CambiaColor(a)
+          {
+              a.style.background = "yellow";
+          }
+  
+    </script>
+
+
+  </head>
+
+
+  <body class="fondo">
+    {% load static %}
+    <!-- Menu -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"> 
+            <img class="logotipo" src="{% static 'img/LogoPerro.jpg' %}" alt=""width="50px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'index' %}" >PetStore</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'somos' %} ">Quienes Somos</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'FormularioR' %}">Registrarse</a>
+            </li>
+
+            
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'FormularioC' %} ">Contacto</a>
+            </li> 
+
+            
+
+
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Productos
+              </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="galeria.html">Alimentos</a></li>
+                  <li><a class="dropdown-item" href="#">Accesorios</a></li>
+                  <li><a class="dropdown-item" href="#">Juguetes</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Contacto</a></li>
+                  </ul>
+              <li class="nav-item">
+                  
+                </li>
+            
+              </li>
+
+             
+
+
+
+          </ul>
+
+
+
+
+
+
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="¿Que estas buscando?" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+          </form>
+          
+        </div>
+    </nav>
+    
+
+
+
+      <div>
+
+    </div>
+
+<div>
+<div> 
+</div>
+  <h1>Registro</h1>
+  <hr>
+  <div id="caja">
+  <form id="mi-formulario" action="Validacion.html" method="post">
+      <label>Correo Electrónico: </label>
+      <input type="email" name="email" required placeholder="nombre@dominio.cl" required
+      onfocus="CambiaColor(this)">
+    
+      <label>Telefono: </label>
+      <input type="text" name="fono" minlength="9" required 
+      onfocus="CambiaColor(this)">
+
+      
+  
+      <label>Contraseña:</label>
+      <input type="password" id="password" name="password" minlength="8"
+      onfocus="CambiaColor(this)" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+      title="Debe contener como mínimo 8 caracteres, considerando un numero, una letra mayuscula, 
+      una letra minúscula" required>>
+    
+      <label>Reingresa contraseña: </label>
+      <input type="password" name="password2" minlength="8" required
+      onfocus="CambiaColor(this)">
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+      
+      <label for="genero">Seleccione Género: </label><br>
+      <br>
+      <div class="form-check">
+          <input type="radio" class="form-check-input" value="1" name="checkgen" id="checkgen1">
+          <label for="checkgen1" class="form-check-label">Hombre</label>
+      </div>
+      <div class="form-check">
+          <input type="radio" class="form-check-input" value="2" name="checkgen" id="checkgen2">
+          <label for="checkgen2" class="form-check-label">Mujer</label>
+      </div>
+
+      <div class="form-check">
+          <input type="radio" class="form-check-input" value="3" name="checkgen" id="checkgen3">
+          <label for="checkgen3" class="form-check-label">Otro</label>
+      </div>
+      <br>
+      <br>
+      <button>Enviar</button>
+    </form>
+  </div>
+</div>
+</div>
+
+
+    <!--Parrafos-->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <img class="img-fluid" src="{% static 'img/perrogato.png' %}" alt="" width="450px">
+                </div>
+                <div class="col-12 col-sm-6">
+                    <br><br><br><strong class="titulo">PetStore!</strong>
+                    <hr>
+                    <strong>
+                      Nos dedicamos especialmente al servicio de productos 
+                      para mascotas, donde buscamos satisfacer 
+                      sus necesidades de compra con una atención eficiente y de calidad.<br><br>
+                      Contamos con diversos canales de compra donde se puede acceder a una gran variedad de productos como alimentos, accesorios, suplementos y otros.<br><br>
+                      <hr>
+                      <p33 class="color">¡Bienvenid@s a
+                        PetStore!</p33>            
+                    </strong>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+    <input type="button" onclick="MostrarFecha()" value="Hora y Fecha actual">
+    <p id="demo"></p>
+
+    <!-- Footer -->
+    <footer>
+        <img class="logofooter" src="{% static 'img/LogoPerro.jpg' %} "width="50px" alt="logotipo"> 
+        <br>
+        <img class="iconos" src="{% static 'img/facebook-logo-button.svg' %}" alt="">
+        <img class="iconos" src="{% static 'img/instagram-logo.svg' %}" alt="">
+        <img class="iconos" src="{% static 'img/twitter-logo-button.svg' %}" alt="">
+        <p>
+            
+            <br>
+            Felipe Hernandez.
+            <br>
+            <strong>
+                @Copyrigth Derechos reservados.
+            </strong>
+        </p>
+
+
+
+    </footer>
+   
+
+
+
+
+  <!--BootStrap-->
+
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

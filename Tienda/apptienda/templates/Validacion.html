@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/LogoPetStore/LogoPerro.jpg"/>
+    <title>Validacion</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilos.css">
+  <link href="css/bootsrap.min.css" type="text/css"rel= "stylesheet">
+  
+  <script>
+    
+
+function CambiaColor(a)
+        {
+            a.style.background = "yellow";
+        }
+
+
+        function Mover(obj)
+        {
+            obj.innerHTML="Que tenga un buen dia";
+            obj.style.background="red";
+           
+        }
+
+        function MoverFuera(obj)
+        {
+            obj.innerHTML="¡Gracias por contactarnos!";
+            obj.style.background= "blue";
+            
+        }
+        
+
+
+  </script>
+
+</head>
+
+<body style="background-color:rgb(255, 241, 225)">
+    
+  { 
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"> 
+          <img class="logotipo" src="{% static 'img/LogoPerro.jpg' %}" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}" >PetStore</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'somos' %} ">Quienes Somos</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'FormularioR' %}">Registrarse</a>
+          </li>
+
+          
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'FormularioC' %} ">Contacto</a>
+          </li> 
+
+          
+
+
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Productos
+            </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="galeria.html">Alimentos</a></li>
+                <li><a class="dropdown-item" href="#">Accesorios</a></li>
+                <li><a class="dropdown-item" href="#">Juguetes</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Contacto</a></li>
+                </ul>
+            <li class="nav-item">
+                
+              </li>
+          
+            </li>
+
+           
+
+
+
+        </ul>
+
+
+
+
+
+
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="¿Que estas buscando?" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+        
+      </div>
+    </div>
+  </nav>
+  
+    <div class="container">
+
+      <hr> 
+    
+      <h3><font color="green">Muchas Gracias por registrarse</font></h3>
+      <div onmouseover="Mover(this)" onmouseout="MoverFuera(this)"
+         style= "background-color: #ff0000; width: 300px; height: 80px;  
+          padding: 20px; left: 40cm;">
+           ¡Gracias por la espera.!
+       </div>
+    <di>
+        
+
+    </form>
+    
+    <section>
+        <div class="container">
+            <div class="row">
+                <div>
+                    <img class="img-fluid" src="{% static 'img/LogoPetStore' %}" alt="" width="1150" >
+                </div>
+                <div class="col-12 col-sm-6">
+                    <br><br><br><strong class="titulo">Pett store</strong>
+                    
+                    <strong>
+      
+                     
+                      <p33 class="color">
+                       </p33>
+                    </strong>
+                </div>
+      
+      
+            </div>
+      
+      
+        </div>
+      
+      </section>
+  </div>
+</div>
+<footer>
+  <br> <br>
+  <br>  <br>
+  <br>  <br>
+  <br>  <br> 
+  <br>  <br>
+  <br>  <br>
+  <br>  <br>
+  <br>  <br>
+  <br>  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <footer style="background-color:rgb(83, 71, 83)">
+
+  <div class="row col-12">
+      <div class="col-lg-1">
+          <img src="{% static 'img/png-clipart-paw-logo-dog-dog-animals-paw.png' %}" alt="logoBookStop" width="60px">
+      </div>
+      <div class="col-lg-1">
+         
+      </div>
+      <div class="col-lg-1">
+          
+      </div>
+      <div class="col-lg-1">
+          
+      </div>
+      <div class="col-lg-2">
+          
+      </div>
+      <br>
+
+
+      <img class="logofooter" src="{% static 'img/LogoPerro.jpg' %}" alt="logotipo" width="60px">
+        <br>
+        <img class="iconos" src="{% static 'img/facebook-logo-button.svg' %}" alt="" width="60px">
+        <img class="iconos" src="{% static 'img/instagram-logo.svg" alt="" width="60px">
+        <img class="iconos" src="{% static 'img/twitter-logo-button.svg' %}" alt="" width="60px">
+        <p>
+            
+            <br>
+            Felipe Hernandez.
+            <br>
+            <strong>
+                @Copyrigth Derechos reservados.
+            </strong>
+        </p>
+</footer>
+    
+</body>
+</html>

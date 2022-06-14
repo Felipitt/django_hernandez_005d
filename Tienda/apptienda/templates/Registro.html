@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Mascotas DZ</title>
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet"> 
+    {% load static %}
+    <link rel="icon" type="image/png" href="{% static 'img/purina-adopta-perros-en-adopción.webp' %}" />
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+<!-- jQuery library --> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+
+body {
+            font-family: cursive;
+          }
+
+  </style> 
+   
+   
+   <script>
+function mueveReloj(){
+    momentoActual = new Date()
+    hora = momentoActual.getHours()
+    minuto = momentoActual.getMinutes()
+    segundo = momentoActual.getSeconds()
+
+    horaImprimible = hora + " : " + minuto + " : " + segundo
+
+    document.form_reloj.reloj.value = horaImprimible
+
+    setTimeout("mueveReloj()",1000)
+}
+      
+      
+      
+      
+      </script>
+      
+
+
+
+</head>
+<body class="fondo" onload="mueveReloj()" >
+  
+  
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"> 
+              <img class="logotipo" src="{% static 'img/LogoPerro.jpg' %}" alt="50px" width="50px"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'index' %}" >PetStore</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'somos' %} ">Quienes Somos</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'FormularioR' %}">Registrarse</a>
+              </li>
+
+              
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'FormularioC' %} ">Contacto</a>
+              </li> 
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %} ">Ingresar</a>
+              </li> 
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'Feriados' %} ">Feriados</a>
+              </li> 
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'Registro' %} ">Registro</a>
+              </li> 
+
+             
+
+
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Productos
+                </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'galeria' %}">Alimentos</a></li>
+                    <li><a class="dropdown-item" href="{% url 'galeria' %}">Accesorios</a></li>
+                    <li><a class="dropdown-item" href="{% url 'galeria' %}">Juguetes</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'FormularioC' %}">Contacto</a></li>
+                    </ul>
+                <li class="nav-item">
+                    
+                  </li>
+              
+                </li>
+
+               
+
+
+
+            </ul>
+
+
+
+
+
+
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="¿Que estas buscando?" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+            
+          </div>
+        </div>
+      </nav>
+  <form name="form_reloj">
+    <input type="text" name="reloj" size="10">
+    </form>
+    form name="datos">
+            <div class="form-group">
+                <label for="nombre">Nombre: </label><br>
+                <input type="text" class="form-control" id="nombre"
+                    placeholder="Digite su nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Correo electronico: </label><br>
+                <input type="email" class="form-control" id="email"
+                    placeholder="Digite su correo electrónico" required>
+            </div>
+            <input type="submit" class="btn btn-success" id="enviar"
+                value="Enviar">
+            
+            <input type="reset" class="btn btn-danger" id="limpiar"
+                value="Limpiar">
+
+
+
+             
+            {% if user.is_authenticated %}
+                <a href="{% url 'AgregarP' %}" class="btn btn-success">Mostrar vehiculos</a>
+            
+                <a href="{%  url 'logout' %}" class="btn btn-primary">Cerrar Sesión</a>
+
+                <a href="#">Bienvenido @{{user.username}}</a>
+            {% else %} 
+                <a href="{% url 'login' %}" class="btn btn-primary">Iniciar Sesión</a>
+            {% endif %}
+        </form>
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+    
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+    
+</head>
+<body>
+    {% load static %}
+
+    <!-- Menu -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"> 
+              <img class="logotipo" src="{% static 'img/LogoPerro.jpg' %}" alt="50px" width="50px"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'index' %}" >PetStore</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'somos' %} ">Quienes Somos</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'FormularioR' %}">Registrarse</a>
+              </li>
+
+              
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'FormularioC' %} ">Contacto</a>
+              </li> 
+
+              
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'Feriados' %} ">Feriados</a>
+              </li> 
+
+              
+
+             
+
+
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Productos
+                </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'galeria' %}">Alimentos</a></li>
+                    <li><a class="dropdown-item" href="{% url 'galeria' %}">Accesorios</a></li>
+                    <li><a class="dropdown-item" href="{% url 'galeria' %}">Juguetes</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'FormularioC' %}">Contacto</a></li>
+                    </ul>
+                <li class="nav-item">
+                    
+                  </li>
+              
+                </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'mostrar_producto' %} ">Productos</a>
+                          </li> 
+            
+                          <li class="nav-item">
+                            <a class="nav-link" href="{% url 'Mostrarclientes' %}">Clientes</a>
+                          
+                        </li> 
+                        <li class="nav-item">
+                             <a href="{% url 'logout' %}">Cerrar Sesion</a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="#">Bienvenido @{{user.username}}</a>
+
+                        </li>
+
+                        {% else %}
+                        <li class="nav-item">
+                            <a href="{% url 'login' %}" >Ingresar</a>
+                        </li> 
+                        
+                        {% endif %}
+
+
+               
+
+
+
+            </ul>
+
+
+
+
+
+
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="¿Que estas buscando?" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+            
+          </div>
+        </div>
+      </nav>
+    {% load crispy_forms_tags %}
+    <div class="container">
+        <br><br><br>
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Ingresa tus credenciales </h2>
+                        <hr>
+                        <form action="#" method="post">
+
+                            {% csrf_token %}
+                            
+                            {{form | crispy}}
+                                                 
+                            <a href="{% url 'index' %}">Ir al Home</a><br>
+                            <input type="submit" value="Ingresar" class="btn btn-success" style="float: right;">
+                        
+                             
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+</body>
+</html>
